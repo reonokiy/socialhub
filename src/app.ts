@@ -23,11 +23,11 @@ const emitWebhookResult = (
 
 runner.addHandler((msg) => {
   const payload = JSON.stringify(msg)
-  for (const ws of sockets) {
+  sockets.forEach((ws) => {
     const readyState = (ws as { readyState?: number }).readyState
-    if (readyState !== undefined && readyState !== 1) continue
+    if (readyState !== undefined && readyState !== 1) return
     ws.send(payload)
-  }
+  })
 })
 
 app.get('/health', (c) => c.json({ ok: true }))
