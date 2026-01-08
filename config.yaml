@@ -1,0 +1,21 @@
+pipeline:
+  dedup_limit: 10000
+
+connectors:
+  - id: telegram-1
+    platform: telegram
+    poll_interval_ms: 5000
+    webhook_enabled: false
+    webhook_secret: ""
+    webhook_url: ""
+    bot_token: ""
+    allowed_updates: []
+    poll_timeout_sec: 25
+  - id: mastodon-1
+    platform: mastodon
+    poll_interval_ms: 7000
+    webhook_enabled: false
+    webhook_secret: ""
+    base_url: "https://mastodon.example"
+    access_token: ""
+    timeline: mentions
